@@ -3,13 +3,9 @@ name: 02 - Workflow Events
 on:
 #   push:
 #     branches: [ master ]
-<<<<<<< Updated upstream
-  pull_request:
-=======
 #   pull_request:
   schedule:
     - cron: "*/2 * * * *"
->>>>>>> Stashed changes
 
 jobs:
   echo:
