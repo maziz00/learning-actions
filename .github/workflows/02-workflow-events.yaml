@@ -3,11 +3,18 @@ name: 02 - Workflow Events
 on:
 #   push:
 #     branches: [ master ]
+<<<<<<< Updated upstream
   pull_request:
+=======
+#   pull_request:
+  schedule:
+    - cron: "*/2 * * * *"
+>>>>>>> Stashed changes
 
 jobs:
   echo:
     runs-on: ubuntu-latest
     steps:
-      - name: Show the trigger
-        run: echo "${{ github.event_name }}"
+      - name: Event name
+        run: |
+          echo "Event name: ${{ github.event_name }}"
