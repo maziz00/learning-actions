@@ -3,6 +3,10 @@ name: 02 - Workflow Events
 on:
   push:
     branches: [ master ]
+  pull_request:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
 
 jobs:
   echo:
