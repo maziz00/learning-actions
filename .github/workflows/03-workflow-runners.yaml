@@ -22,12 +22,12 @@ jobs:
         run: |
           echo "This job is running on an $RUNNER_OS"
 
-  # mac-echo:
-  #   runs-on: macos-latest
-  #   steps:
-  #     - name: Show OS
-  #       run: |
-  #         echo "This job is running on an ${{ runner.os }}"
+  mac-echo:
+    runs-on: macos-latest
+    steps:
+      - name: Show OS
+        run: |
+          echo "This job is running on an $RUNNER_OS"
 
 
 
