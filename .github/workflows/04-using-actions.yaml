@@ -7,7 +7,7 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name:  Checkout Code
+            - name: Checkout Code
               uses: actions/checkout@v4
 
             - name: Setup Node
@@ -17,3 +17,4 @@ jobs:
 
             - name:  Install Dependencies
               run: npm ci --silent
+              working-directory: 04-using-actions/react-app
