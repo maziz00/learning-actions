@@ -1,0 +1,16 @@
+name: 04 - Using Actions
+
+on:
+    push:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name:  Checkout Code
+              uses: actions/checkout@v
+
+            - name: Printing Folders
+              run:
+                echo "The following folders are in the repository:"
+                cd react-app/ && ls -lhtr
