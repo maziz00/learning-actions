@@ -11,11 +11,12 @@ jobs:
             - name: Display Information
               run: |
                 echo "This is the repository owner: ${{ github.repository_owner }}"
-                echo "Event name: ${{ github.event.name }}"
+                echo "Event name: ${{ github.event_name }}"
                 echo "Ref: ${{ github.ref }}"
                 echo "SHA: ${{  github.sha }}"
                 echo "Actor: ${{ github.actor_id}}"
-                echo "Workflow: ${{ github.workflow.name }}"
+                # echo "Workflow: ${{ github.workflow.name }}"
+                echo "Workflow Name: $(basename $GITHUB_WORKFLOW_PATH .yml) >> echo $GITHUB_ENV"
                 echo "Run ID: ${{ github.run_id }}"
                 echo "Run number: ${{ github.run_number}}"
                 echo "Repository: ${{ github.repository }} on branch: $(basename ${{ github.ref }})"
