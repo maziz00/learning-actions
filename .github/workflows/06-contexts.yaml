@@ -11,14 +11,14 @@ jobs:
             - name: Display Information
               run: |
                 echo "This is the repository owner: ${{ github.repository_owner }}"
-                echo "Event name: ${{ github.event }}"
+                echo "Event name: ${{ github.event.name }}"
                 echo "Ref: ${{ github.ref }}"
                 echo "SHA: ${{  github.sha }}"
                 echo "Actor: ${{ github.actor_id}}"
                 echo "Workflow: ${{ github.workflow.name }}"
                 echo "Run ID: ${{ github.run_id }}"
                 echo "Run number: ${{ github.run_number}}"
-                echo "Repository: ${{ github.repository }} on branch ${{  github.head_ref }}"
+                echo "Repository: ${{ github.repository }} on branch: $(basename ${{ github.ref }})"
 
             - name: Retrieve Variable
               env:
