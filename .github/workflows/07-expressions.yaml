@@ -23,7 +23,7 @@ jobs:
                 echo "Runner OS: ${{ Runner.OS}}"
 
             - name: Print when triggered from master
-              if: ${{ github.event.inputs.debug == 'true' }} && $(basename ${{ github.ref }}) == 'master'
+              if: ${{ github.event.inputs.debug == 'true' && github.ref == 'master' }}
               run: |
                 echo "I was triggered from $(basename ${{ github.ref }})"
 
