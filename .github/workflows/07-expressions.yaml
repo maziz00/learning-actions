@@ -14,16 +14,16 @@ jobs:
     echo:
         runs-on: ubuntu-latest
         steps:
-            - name: [debug] Print start-up data
-              if: ${{ inputs.debug }} == "true"
-              runs: |
+            - name: Print start-up data
+              if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug == 'true' }}
+              run: |
                 echo "Triggered by: ${{ github.event_name }}"
-                echo "Branch: ${{ github.ref }}"
-                echo "Commit SHA: ${{ .github.sha }}"
+                echo "Branch: $(basename ${{ github.ref }})"
+                echo "Commit SHA: ${{ github.sha }}"
                 echo "Runner OS: ${{ Runner.OS}}"
 
-            - name: [debug] Print when triggered from main
-              if: ${{ inputs.debug }} == "true" && ${{ github.branch }} == "master"
-              runs: |
-                echo "I was triggered from ${{ github.branch}}"
+            - name: Print when triggered from master
+              if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug == 'true' && github.branch == 'master' }}
+              run: |
+                echo "I was triggered from $(basename ${{ github.ref }})"
 
