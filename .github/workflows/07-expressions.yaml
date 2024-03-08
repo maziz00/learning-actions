@@ -25,5 +25,5 @@ jobs:
             - name: [debug] Print when triggered from main
               if: ${{ inputs.debug }} == "true" && ${{ github.branch }} == "master"
               runs: |
-                echo ""I was triggered from ${{ github.branch}}
+                echo "I was triggered from ${{ github.branch}}"
 
