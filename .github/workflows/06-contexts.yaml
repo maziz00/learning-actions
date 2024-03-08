@@ -5,10 +5,10 @@ run-name: 06 - Contexts | DEBUG - ${{ inputs.debug }}
 on:
     # - push
     workflow_dispatch:
-        inputs:
-            debug:
-                type: boolean
-                default: true
+        # inputs:
+        #     debug:
+        #         type: boolean
+        #         default: true
 
 env:
   MY_WORKFLOW_VAR: 'workflow'
@@ -38,7 +38,12 @@ jobs:
               run: |
                 echo "${{ vars.MY_VAR }}"
 
-            - name: Print Env Variables
+            - name: Print Env Variables - 1st
+              run: |
+                echo "Workflow env: $MY_WORKFLOW_VAR"
+                echo "Overwritten env: $MY_OVERWRITTEN_VAR"
+
+            - name: Print Env Variables - 2nd
               run: |
                 echo "Workflow env: $MY_WORKFLOW_VAR"
                 echo "Overwritten env: $MY_OVERWRITTEN_VAR"
