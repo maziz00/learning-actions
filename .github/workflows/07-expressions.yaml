@@ -15,7 +15,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Print start-up data
-              if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug == 'true' }}
+              if: ${{ github.event.inputs.debug == 'true' }}
               run: |
                 echo "Triggered by: ${{ github.event_name }}"
                 echo "Branch: $(basename ${{ github.ref }})"
@@ -23,7 +23,7 @@ jobs:
                 echo "Runner OS: ${{ Runner.OS}}"
 
             - name: Print when triggered from master
-              if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug == 'true' }} && $(basename ${{ github.ref }}) == 'master'
+              if: ${{ github.event.inputs.debug == 'true' }} && $(basename ${{ github.ref }}) == 'master'
               run: |
                 echo "I was triggered from $(basename ${{ github.ref }})"
 
