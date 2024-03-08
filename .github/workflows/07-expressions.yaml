@@ -1,7 +1,5 @@
 name: 07 - Using Expressions
 
-run-name: 07 - Using Expressions | DEBUG - ${{ inputs.debug }}
-
 on:
     push:
     workflow_dispatch:
@@ -14,16 +12,17 @@ jobs:
     echo:
         runs-on: ubuntu-latest
         steps:
-            - name: Print start-up data
-              if: ${{ github.event.inputs.debug == 'true' }}
+            - name: '[debug] Print start-up data'
+              if: ${{ inputs.debug }}
               run: |
                 echo "Triggered by: ${{ github.event_name }}"
                 echo "Branch: $(basename ${{ github.ref }})"
                 echo "Commit SHA: ${{ github.sha }}"
                 echo "Runner OS: ${{ Runner.OS}}"
 
-            - name: Print when triggered from master
-              if: ${{ github.event.inputs.debug == 'true' && github.ref == 'master' }}
+            - name: '[debug] Print when triggered from master'
+              if: ${{ inputs.debug && github.ref == 'refs/heads/master' }}
               run: |
                 echo "I was triggered from $(basename ${{ github.ref }})"
-
+            - name: Salam
+              run: ehco "Al Salam Alikom"
