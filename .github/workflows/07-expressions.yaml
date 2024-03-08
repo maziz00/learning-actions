@@ -23,6 +23,7 @@ jobs:
             - name: '[debug] Print when triggered from master'
               if: ${{ inputs.debug && github.ref == 'refs/heads/master' }}
               run: |
-                echo "I was triggered from ${GITHUB_REF##*/})"
+                # echo "I was triggered from ${GITHUB_REF##*/}"
+                echo "I was triggered from $(basename ${{ github.ref }})"
             - name: Salam
               run: echo "Al Salam Alikom"
