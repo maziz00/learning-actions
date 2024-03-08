@@ -1,5 +1,7 @@
 name: 07 - Using Expressions
 
+run-name: 07 - Using Expressions | Debug - ${{ inputs.debug && 'ON' || 'OFF' }}
+
 on:
     push:
     workflow_dispatch:
@@ -13,7 +15,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: '[debug] Print start-up data'
-              if: ${{ inputs.debug }}
+              if: inputs.debug
               run: |
                 echo "Triggered by: ${{ github.event_name }}"
                 echo "Branch: $(basename ${{ github.ref }})"
@@ -21,7 +23,7 @@ jobs:
                 echo "Runner OS: ${{ Runner.OS}}"
 
             - name: '[debug] Print when triggered from master'
-              if: ${{ inputs.debug && github.ref == 'refs/heads/master' }}
+              if: inputs.debug && github.ref == 'refs/heads/master'
               run: |
                 # echo "I was triggered from ${GITHUB_REF##*/}"
                 echo "I was triggered from $(basename ${{ github.ref }})"
