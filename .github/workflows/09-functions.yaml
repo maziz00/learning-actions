@@ -26,4 +26,4 @@ jobs:
             - name: I will execute when cancelled
               if: ${{ cancelled()}}
               run:
-                echo ""
+                echo " will print if workflow cancelled"
