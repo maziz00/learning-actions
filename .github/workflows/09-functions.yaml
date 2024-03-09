@@ -1,8 +1,8 @@
 name: 09 - Using Functions
 
 on:
-    pull_request:
-        types: [opened, synchronize]
+    # pull_request:
+    #     types: [opened, synchronize]
     workflow_dispatch:
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
                 # EOF
                 echo "PR Labels: ${{ toJson(github.event.pull_request.labels) }}"
             - name: Bug step
-              if: ${{ failure() &&  !cancelled() && contains(github.event.pull_request.title, 'fix') }}
+              if: ${{ !cancelled() && contains(github.event.pull_request.title, 'fix') }}
               run: |
                  echo "I am a bug fix"
             - name: Sleep for 20 seconds
