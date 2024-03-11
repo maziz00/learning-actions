@@ -33,4 +33,4 @@ jobs:
             - name: Deploy
               run: |
                 echo "Deploying to ${{ inputs.target }}"
-                echo "Targeted Env: ${{ env.ENV_NAME }}"
+                echo "Targeted Env: ${{ vars.NAME_ENV }}"
