@@ -19,10 +19,7 @@ jobs:
             output2: value 2
         steps:
             - name: Print GITHUB_OUTPUT path
-              run: |
-                echo "$GITHUB_OUTPUT"
-                # echo "mistake=true" > $GITHUB_PATH
-                echo $GITHUB_OUPUT"
+              run: echo "$GITHUB_OUTPUT"
             - name: Build
               id: build
               run: echo "status=${{ inputs.build-status }}" >> $GITHUB_OUTPUT
