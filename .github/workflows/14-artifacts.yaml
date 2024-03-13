@@ -10,7 +10,7 @@ env:
     path-test: 14-artifacts/react-app/coverage
 
 jobs:
-    build:
+    test-build:
         runs-on: ubuntu-latest
         defaults:
             run:
@@ -54,7 +54,7 @@ jobs:
                  path: ${{ env.path-build }}
 
     deploy:
-        needs: [test-build]
+        needs: test-build
         runs-on: ubuntu-latest
         steps:
             - name: Download Build Files
