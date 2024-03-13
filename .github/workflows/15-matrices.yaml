@@ -20,7 +20,6 @@ jobs:
                     - os: ubuntu-latest
                       node-version: 21.x
                       tag: experimental
-
         steps:
             - name: Setup Node
               uses: actions/setup-node@v4
@@ -38,4 +37,20 @@ jobs:
 
             - name: Upload test results
               run: echo "Uploading test results"
+
+    include-example:
+        runs-on: ubuntu-latest
+        name: ${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}
+        strategy:
+            fail-fast: false
+            matrix:
+                color: [red, green]
+                shape: [circle, square]
+                size: [small, large]
+                include:
+                    - color: red
+                      shape: triangle
+        steps:
+            - name: Dummey Step
+              run: echo "${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}"
             
