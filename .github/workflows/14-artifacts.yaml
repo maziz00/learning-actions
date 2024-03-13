@@ -10,7 +10,7 @@ env:
     path-test: 14-artifacts/react-app/coverage
 
 jobs:
-    test-build:
+    build:
         runs-on: ubuntu-latest
         defaults:
             run:
