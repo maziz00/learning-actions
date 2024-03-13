@@ -5,7 +5,7 @@ on:
 
 jobs:
     backwards-compatibility:
-        runs-on: ubuntu-latest
+        runs-on: ${{ matrix.os }}
         name: ${{ matrix.os}}-${{ matrix.node-version }}
         strategy:
             fail-fast: false
@@ -33,7 +33,7 @@ jobs:
             
             - name: Perform some tests
               run: |
-                echo "Running tests on OS ${{ matrix.os }}and NodeJS ${{ matrix.node-version }}"
+                echo "Running tests on OS ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}"
                 sleep 10
 
             - name: Upload test results
