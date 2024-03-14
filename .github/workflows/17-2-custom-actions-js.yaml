@@ -14,10 +14,6 @@ on:
             working-dir:
                 type: string
                 default: 17-custom-actions/react-app
-            gh-token:
-                type: string
-                description: GitHub token with permissions to create a PR
-                default: ${{ secrets.GITHUB_TOKEN }}
 
 permissions:
     contents: write
@@ -36,4 +32,4 @@ jobs:
                 base-branch: ${{ inputs.base-branch }}
                 target-branch: ${{ inputs.target-branch }}
                 working-directory: ${{ inputs.working-dir }}
-                gh-token: ${{ inputs.gh-token }}
+                gh-token: ${{ secrets.GITHUB_TOKEN }}
