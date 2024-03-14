@@ -2,6 +2,11 @@ name: 17 - 2 - Custom Actions - JS
 
 run-name: 17 - 2 - Custom Actions - JS | BB ${{ inputs.base-branch}} - TB ${{ inputs.target-branch }} - WD ${{ inputs.working-dir }} 
 
+permissions:
+    contents: write
+    pull-requests: write
+
+
 on:
     workflow_dispatch:
         inputs:
@@ -14,6 +19,8 @@ on:
             working-dir:
                 type: string
                 default: 17-custom-actions/react-app
+            gh-token:
+                default: ${{ secrets.GH_TOKEN }}
 
 jobs:
     dependency-update:
@@ -28,3 +35,4 @@ jobs:
                 base-branch: ${{ inputs.base-branch }}
                 target-branch: ${{ inputs.target-branch }}
                 working-directory: ${{ inputs.working-dir }}
+                github-token: ${{ inputs.gh-token }}
