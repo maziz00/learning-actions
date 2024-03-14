@@ -1,6 +1,6 @@
 name: 17 - 1 - Custom Actions - Composite
 
-run-name: 17 - 1 - Custom Actions - Composite | env - ${{ inputs.target-env }}
+run-name: 17 - 1 - Cu  stom Actions - Composite | env - ${{ inputs.target-env }}
 
 on:
     workflow_dispatch:
@@ -11,7 +11,7 @@ on:
                 description: Select the environment to deploy
 
 env:
-    working-directory: '17-custom-actions/react-app'
+    working-directory: 17-custom-actions/react-app
 
 jobs:
     build:
@@ -26,8 +26,8 @@ jobs:
             - name: Setup Node and NPM Dependencies
               uses: ./.github/actions/composite-cache-deps
               with:
-                path: ${{ env.working-directory  }}/node_modules
-                key: node-modules-${{ hashFiles('${{ env.working-directory }}/package-lock.json') }}
+                node-version: 20.x
+                working-dir: ${{ env.working-directory }}
 
             - name: Test
               run: npm run test
