@@ -7,7 +7,7 @@ const validateBranchName = ({ branchName }) =>
 const validateDirectoryName = ({ dirName }) =>
   /^[a-zA-Z0-9_\-\/]+$/.test(dirName);
 
-const setupLogger = ({ debug, perfix } = { debug: false, prefix: ''}) => ({
+const setupLogger = ({ debug, prefix } = { debug: false, prefix: ''}) => ({
     debug: (message) => {
         if (debug) {
             core.info(`DEBUG ${prefix}${prefix ? ' : ' : ''}${message}`);
@@ -98,7 +98,7 @@ async function run() {
 
     try {
       logger.debug(`Creating PR using head branch ${headBranch}`);
-        
+
       await octokit.rest.pulls.create({
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
