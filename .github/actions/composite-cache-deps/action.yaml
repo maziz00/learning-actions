@@ -46,4 +46,5 @@ runs:
     #   working-directory: ${{ inputs.working-dir }}
 
     - name: Install dependencies
+      shell: bash
       run: ${{ inputs.target-env == 'dev' && 'npm ci' || 'npm ci --omit=dev'}}
