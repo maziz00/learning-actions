@@ -2,11 +2,6 @@ name: 17 - 2 - Custom Actions - JS
 
 run-name: 17 - 2 - Custom Actions - JS | BB ${{ inputs.base-branch}} - TB ${{ inputs.target-branch }} - WD ${{ inputs.working-dir }} 
 
-permissions:
-    contents: write
-    pull-requests: write
-
-
 on:
     workflow_dispatch:
         inputs:
@@ -22,7 +17,11 @@ on:
             gh-token:
                 type: string
                 description: GitHub token with permissions to create a PR
-                default: ${{ secrets.GH_TOKEN }}
+                default: ${{ secrets.GITHUB_TOKEN }}
+
+permissions:
+    contents: write
+    pull-requests: write
 
 jobs:
     dependency-update:
@@ -37,4 +36,4 @@ jobs:
                 base-branch: ${{ inputs.base-branch }}
                 target-branch: ${{ inputs.target-branch }}
                 working-directory: ${{ inputs.working-dir }}
-                github-token: ${{ inputs.gh-token }}
+                gh-token: ${{ inputs.gh-token }}
