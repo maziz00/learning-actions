@@ -3,6 +3,11 @@ import requests
 import time
 from requests.exceptions import MissingSchema, ConnectionError
 
+
+def set_output(file_path, key, value):
+    with open(file_path, 'a') as file:
+        print(f'{key}={value}', file=file)
+
 def ping_url(url, delay, max_trials):
     trials = 0
 
@@ -35,6 +40,7 @@ def run():
     max_trials = int(os.getenv("INPUT_MAX_TRIALS"))
     delay = int(os.getenv("INPUT_DELAY"))
 
+    set_output(os.getenv('GITHUB_OUTPUT'), 'url-reachable', website_reachable)
     if not validate_url(website_url):
         raise Exception(f"Website {website_url} is malformed or unreachable.")
 
