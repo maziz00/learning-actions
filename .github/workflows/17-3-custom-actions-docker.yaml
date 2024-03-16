@@ -10,7 +10,7 @@ on:
                 type: choice
                 options:
                     - 'https://www.google.com'
-                    - 'https://Invalid-URL-XYZ0123.com'
+                    - 'https://www.Invalid-URL-XYZ0123.com'
                     - 'invalid-notcorrectformat'
             max_trials:
                 description: Maximum trials until action fails

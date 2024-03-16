@@ -16,20 +16,20 @@ def ping_url(url, delay, max_trials):
             time.sleep(delay)
             trials += 1
         except requests.exceptions.MissingSchema:
-            print(f"Invalid URL format: {url}. Make sure the URL has a valid schema (e.g.), http:// or https://")
-            
+            print(f"Invalid URL format: {url}. Make sure the URL has a valid schema (e.g., http:// or https://')")
+
     return False
                 
 
 def run():
-    website_rul= os.getenv("INPUT_URL")
+    website_url= os.getenv("INPUT_URL")
     delay = int(os.getenv("INPUT_DELAY"))
     max_trials = int(os.getenv("INPUT_MAX_TRIALS"))
 
-    website_reachable = ping_url(website_rul, delay, max_trials)
+    website_reachable = ping_url(website_url, delay, max_trials)
     if not website_reachable:
-        raise Exception(f"Website {website_rul} is malformed or unreachable.")
-    print(f"Website {website_rul}: is up and running.")
+        raise Exception(f"Website {website_url} is malformed or unreachable.")
+    print(f"Website {website_url}: is up and running.")
 
 if __name__ == "__main__":
     run()
