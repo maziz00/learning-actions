@@ -74,10 +74,10 @@ async function run() {
     }
   );
 
-  let updatesAvailable = false;
+  let updatesAvailabe = false;
 
   if (gitStatus.stdout.length > 0) {
-    updatesAvailable = true;
+    updatesAvailabe = true;
     logger.debug('There are updates available!');
     logger.debug('Setting up git');
     await exec.exec(`git config --global user.name "gh-automation"`);
@@ -119,8 +119,8 @@ async function run() {
     logger.info('No updates at this point in time.');
   }
 
-  logger.debug(`Setting updates-available output to ${updatesAvailable}`);
-  core.setOutput('updates-available', true);
+  logger.debug(`Setting updates-availabe output to ${updatesAvailabe}`);
+  core.setOutput('updates-availabe', updatesAvailabe);
   /*
   [DONE] 1. Parse inputs:
     1.1 base-branch from which to check for updates
