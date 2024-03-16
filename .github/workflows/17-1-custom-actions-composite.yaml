@@ -33,7 +33,7 @@ jobs:
 
             - name: Print setup deps output
               run: |
-                echo "Installed dependencies: ${{ steps.setup-deps.outputs.installed-dependencies }}"
+                echo "Installed dependencies: ${{ steps.setup-deps.outputs.installed-deps }}"
 
             - name: Test
               run: npm run test
