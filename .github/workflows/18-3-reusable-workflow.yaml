@@ -11,6 +11,6 @@ jobs:
 
     e2e-tests:
         needs: deploy
-        uses: maziz00/github-actions-e2e/.github/workflows/e2e.yaml@master,v1.0
+        uses: maziz00/github-actions-e2e/.github/workflows/e2e.yaml@master
         secrets:
             access-token: ${{ secrets.GH_TOKEN }}
