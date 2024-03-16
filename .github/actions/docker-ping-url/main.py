@@ -1,6 +1,7 @@
 import os
 import requests
 import time
+from requests.exceptions import MissingSchema, ConnectionError
 
 def ping_url(url, delay, max_trials):
     trials = 0
@@ -11,20 +12,31 @@ def ping_url(url, delay, max_trials):
             if response.status_code == 200:
                 print(f"Website {url} is reachable.")
                 return True
-        except requests.ConnectionError:
+        except ConnectionError:
             print(f"Website {url} is unreachable. Retrying in {delay} seconds..")
             time.sleep(delay)
             trials += 1
-        except requests.exceptions.MissingSchema:
+        except MissingSchema:
             print(f"Invalid URL format: {url}. Make sure the URL has a valid schema (e.g., http:// or https://')")
+            return False
 
     return False
-                
+
+def validate_url(url):
+    try:
+        result = requests.get(url)
+        return True
+    except MissingSchema:
+        print(f"Invalid URL format: {url}. Make sure the URL has a valid schema (e.g., http:// or https://')")
+        return False
 
 def run():
-    website_url= os.getenv("INPUT_URL")
+    website_url = os.getenv("INPUT_URL")
     delay = int(os.getenv("INPUT_DELAY"))
     max_trials = int(os.getenv("INPUT_MAX_TRIALS"))
+
+    if not validate_url(website_url):
+        raise Exception(f"Website {website_url} is malformed or unreachable.")
 
     website_reachable = ping_url(website_url, delay, max_trials)
     if not website_reachable:
