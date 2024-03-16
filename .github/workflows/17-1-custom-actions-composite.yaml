@@ -27,7 +27,7 @@ jobs:
               id: setup-deps
               uses: ./.github/actions/composite-cache-deps
               with:
-                node-version: 21.x
+                node-version: 16.x
                 working-dir: ${{ env.working-directory }}
                 target-env: ${{ inputs.target-env }}
 
