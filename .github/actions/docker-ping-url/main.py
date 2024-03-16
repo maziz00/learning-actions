@@ -40,7 +40,6 @@ def run():
     max_trials = int(os.getenv("INPUT_MAX_TRIALS"))
     delay = int(os.getenv("INPUT_DELAY"))
 
-    set_output(os.getenv('GITHUB_OUTPUT'), 'url-reachable', website_reachable)
     if not validate_url(website_url):
         raise Exception(f"Website {website_url} is malformed or unreachable.")
 
@@ -48,6 +47,8 @@ def run():
     if not website_reachable:
         raise Exception(f"Website {website_url} is malformed or unreachable.")
     print(f"Website {website_url}: is up and running.")
+
+    set_output(os.getenv('GITHUB_OUTPUT'), 'url-reachable', website_reachable)
 
 if __name__ == "__main__":
     run()
