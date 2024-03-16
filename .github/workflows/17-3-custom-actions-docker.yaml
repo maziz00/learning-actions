@@ -4,11 +4,14 @@ on:
     workflow_dispatch:
         inputs:
             url:
-                description: 'Website URL'
+                description: Website URL
                 required: true
-                default: 'https://www.google.com'
+                default: https://www.google.com
                 type: choice
-                options: ['https://www.google.com', 'https://unreachable.example.com']
+                options:
+                    - 'https://www.google.com'
+                    - 'https://Invalid-URL-XYZ0123.com'
+                    - 'invalid-notcorrectformat'
             max_trials:
                 description: Maximum trials until action fails
                 required: false
