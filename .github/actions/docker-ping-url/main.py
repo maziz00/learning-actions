@@ -32,8 +32,8 @@ def validate_url(url):
 
 def run():
     website_url = os.getenv("INPUT_URL")
-    delay = int(os.getenv("INPUT_DELAY"))
     max_trials = int(os.getenv("INPUT_MAX_TRIALS"))
+    delay = int(os.getenv("INPUT_DELAY"))
 
     if not validate_url(website_url):
         raise Exception(f"Website {website_url} is malformed or unreachable.")
