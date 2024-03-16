@@ -9,11 +9,11 @@ on:
                 default: 'https://www.google.com'
                 type: choice
                 options: ['https://www.google.com', 'https://unreachable.example.com']
-              max_trials:
+            max_trials:
                 description: Maximum trials until action fails
                 required: false
                 default: '10'
-              delay:
+            delay:
                 description: Delay in seconds between trials
                 required: false
                 default: '5'
