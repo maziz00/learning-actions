@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       target-directory:
-        description: "Target directory"
+        description: Target directory
         required: true
         type: string
     outputs:
